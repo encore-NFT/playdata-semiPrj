@@ -41,4 +41,20 @@ bower_components
 psd
 thumb
 sketch
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Scrapy stuff:
+.scrapy
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
 ##########
