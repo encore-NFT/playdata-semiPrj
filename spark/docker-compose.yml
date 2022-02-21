@@ -3,7 +3,7 @@ version: "3.6"
 services:
 
   jupyterlab:
-    image: jupyterlab
+    image: carl020958/spark-jupyterlab:3.1.2-2.2.6
     container_name: jupyterlab
     restart: always
     ports:
@@ -14,7 +14,7 @@ services:
       - localnet
   
   spark-master:
-    image: spark-master
+    image: carl020958/spark-master:spark-3.1.2
     container_name: spark-master
     restart: always
     ports:
@@ -26,7 +26,7 @@ services:
       - localnet
 
   spark-worker-1:
-    image: spark-worker
+    image: carl020958/spark-worker:spark-3.1.2
     container_name: spark-worker-1
     restart: always
     environment:
@@ -42,7 +42,7 @@ services:
       - spark-master
 
   spark-worker-2:
-    image: spark-worker
+    image: carl020958/spark-worker:spark-3.1.2
     container_name: spark-worker-2
     restart: always
     environment:
@@ -57,7 +57,7 @@ services:
     depends_on:
       - spark-master
 
-  mongodb2:
+  db1:
     image: mongo:5.0.5
     container_name: mongodb2
     restart: always
@@ -71,6 +71,24 @@ services:
         - mongodb_config2:/data/configdb
     networks:
       - localnet
+  
+  db2:          
+    image: mysql:5.7.19
+    container_name: mysql2 
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+
+    command:
+      # - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data2:/var/lib/mysql
+    networks:
+      - localnet
 
 
 volumes:
@@ -79,7 +97,9 @@ volumes:
     driver: local
   mongodb2:
   mongodb_config2:
+  mysql_data2:
+
 
 networks:
   localnet:
-    attachable: true
+    # attachable: true
