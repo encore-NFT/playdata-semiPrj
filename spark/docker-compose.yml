@@ -9,7 +9,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - shared-workspace:/opt/workspace
+     - shared-workspace:/opt/workspace
     networks:
       - localnet
   
@@ -73,9 +73,9 @@ services:
       - localnet
   
   db2:          
-    image: mysql:5.7.19
-    # image: mysql:5.7 # M1
-    # platform: linux/x86_64 # M1
+    # image: mysql:5.7.19
+    image: mysql:5.7 # M1
+    platform: linux/x86_64 # M1
     container_name: mysql2 
     restart: always
     environment:
