@@ -5,14 +5,7 @@ FROM cluster-base
 ARG spark_version=3.1.2
 ARG hadoop_version=3.2
 
-RUN apt-get update -y && \
-   pip3 install --upgrade pip setuptools wheel &&\
-   pip3 install pandas &&\
-   # pip3 install scikit-learn==0.22.1 &&\
-   # pip3 install tensorflow &&\
-   # pip3 install torch &&\
-    apt-get install -y curl && \
-    curl https://archive.apache.org/dist/spark/spark-${spark_version}/spark-${spark_version}-bin-hadoop${hadoop_version}.tgz -o spark.tgz && \
+RUN curl https://archive.apache.org/dist/spark/spark-${spark_version}/spark-${spark_version}-bin-hadoop${hadoop_version}.tgz -o spark.tgz && \
     tar -xf spark.tgz && \
     mv spark-${spark_version}-bin-hadoop${hadoop_version} /usr/bin/ && \
     mkdir /usr/bin/spark-${spark_version}-bin-hadoop${hadoop_version}/logs && \
