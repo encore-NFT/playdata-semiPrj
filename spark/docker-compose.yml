@@ -2,6 +2,7 @@ version: "3.6"
 
 services:
 
+# spark
   jupyterlab:
     image: jupyterlab
     container_name: jupyterlab
@@ -57,6 +58,7 @@ services:
     depends_on:
       - spark-master
 
+# db
   db1:
     image: mongo:5.0.5
     container_name: mongodb2
@@ -91,7 +93,71 @@ services:
     networks:
       - localnet
 
+# hdfs
+  namenode:
+    image: hadoop-namenode:hadoop3.2.2-java8
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    networks:
+      - localnet
 
+  datanode:
+    image: hadoop-datanode:hadoop3.2.2-java8
+    container_name: datanode
+    restart: always
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - localnet
+
+  resourcemanager:
+    image: hadoop-resourcemanager:hadoop3.2.2-java8
+    container_name: resourcemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - localnet
+
+  nodemanager1:
+    image: hadoop-nodemanager:hadoop3.2.2-java8
+    container_name: nodemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    networks:
+      - localnet
+  historyserver:
+    image: hadoop-historyserver:hadoop3.2.2-java8
+    container_name: historyserver
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - ./hadoop.env
+    networks:
+      - localnet
+
+# volumes
 volumes:
   shared-workspace:
     name: "hadoop-distributed-file-system"
@@ -99,8 +165,11 @@ volumes:
   mongodb2:
   mongodb_config2:
   mysql_data2:
+  hadoop_namenode:
+  hadoop_datanode:
+  hadoop_historyserver:
 
-
+# networks
 networks:
   localnet:
     # attachable: true
