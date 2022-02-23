@@ -4,7 +4,8 @@ services:
 
 # spark
   jupyterlab:
-    image: jupyterlab
+    image: carl020958/spark-jupyterlab:3.1.2-2.2.6-mecab
+    # image: jupyterlab
     container_name: jupyterlab
     restart: always
     ports:
@@ -15,7 +16,8 @@ services:
       - localnet
   
   spark-master:
-    image: spark-master
+    image: carl020958/spark-master:spark-3.1.2-mecab
+    # image: spark-master
     container_name: spark-master
     restart: always
     ports:
@@ -27,7 +29,8 @@ services:
       - localnet
 
   spark-worker-1:
-    image: spark-worker
+    image: carl020958/spark-worker:spark-3.1.2-mecab
+    # image: spark-worker
     container_name: spark-worker-1
     restart: always
     environment:
@@ -43,7 +46,8 @@ services:
       - spark-master
 
   spark-worker-2:
-    image: spark-worker
+    image: carl020958/spark-worker:spark-3.1.2-mecab
+    # image: spark-worker
     container_name: spark-worker-2
     restart: always
     environment:
