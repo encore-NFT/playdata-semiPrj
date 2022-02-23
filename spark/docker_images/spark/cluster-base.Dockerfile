@@ -28,9 +28,9 @@ RUN cd /tmp && \
 <<<<<<< Updated upstream
   cd mecab-0.996-ko-0.9.2 && \
   # intel
-  ./configure && \
+  # ./configure && \
   # m1
-  # ./configure --build=aarch64-unknown-linux-gnu \
+  ./configure --build=aarch64-unknown-linux-gnu \
   make && make check && make install && \
 =======
   cd mecab-0.996-ko-0.9.2 && ./configure --build=aarcch64-unknown-linux-gnu && make && make check && make install && \
@@ -43,9 +43,9 @@ RUN cd /tmp && \
 <<<<<<< Updated upstream
   ./autogen.sh && \
   # intel
-  ./configure && \
+  # ./configure && \
   # m1
-  # ./configure --build=aarch64-unknown-linux-gnu \
+  ./configure --build=aarch64-unknown-linux-gnu \
   && make && make install && \
 =======
   ./autogen.sh && ./configure --build=aarcch64-unknown-linux-gnu && make && make install && \
