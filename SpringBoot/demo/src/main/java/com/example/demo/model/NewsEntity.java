@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Data @Entity @Table(name="kidnews")
 public class NewsEntity {
 	@Id @GeneratedValue(generator="system-uuid")
+	
 	private String newsUrl;
   	private String newsTitle;
   	private String newsDate;
