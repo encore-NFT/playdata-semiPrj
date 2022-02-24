@@ -25,31 +25,22 @@ RUN mkdir -p ${shared_workspace} && \
 RUN cd /tmp && \
   curl -LO https://bitbucket.org/eunjeon/mecab-ko/downloads/mecab-0.996-ko-0.9.2.tar.gz && \
   tar zxfv mecab-0.996-ko-0.9.2.tar.gz && \
-<<<<<<< Updated upstream
   cd mecab-0.996-ko-0.9.2 && \
   # intel
   ./configure && \
   # m1
-  # ./configure --build=aarch64-unknown-linux-gnu \
-  make && make check && make install && \
-=======
-  cd mecab-0.996-ko-0.9.2 && ./configure --build=aarcch64-unknown-linux-gnu && make && make check && make install && \
->>>>>>> Stashed changes
-  ldconfig && \
+  # ./configure --build=aarch64-unknown-linux-gnu && \
+  make && make check && make install && ldconfig && \
 # mecab-ko-dic
   curl -LO https://bitbucket.org/eunjeon/mecab-ko-dic/downloads/mecab-ko-dic-2.1.1-20180720.tar.gz && \
   tar -zxvf mecab-ko-dic-2.1.1-20180720.tar.gz && \
   cd mecab-ko-dic-2.1.1-20180720 && \
-<<<<<<< Updated upstream
   ./autogen.sh && \
   # intel
   ./configure && \
   # m1
-  # ./configure --build=aarch64-unknown-linux-gnu \
+  # ./configure --build=aarch64-unknown-linux-gnu && \
   && make && make install && \
-=======
-  ./autogen.sh && ./configure --build=aarcch64-unknown-linux-gnu && make && make install && \
->>>>>>> Stashed changes
 # sh -c 'echo "dicdir=/usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc' && \
   cd / && \
   rm -rf /var/lib/apt/lists/* /tmp/*
