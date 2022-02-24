@@ -1,4 +1,4 @@
-FROM carl020958/hadoop-base:hadoop3.2.2-java8
+FROM hadoop-base:hadoop3.2.2-java8
 
 HEALTHCHECK CMD curl -f http://localhost:8188/ || exit 1
 
