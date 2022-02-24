@@ -40,7 +40,7 @@ RUN cd /tmp && \
   ./configure && \
   # m1
   # ./configure --build=aarch64-unknown-linux-gnu && \
-  && make && make install && \
+  make && make install && \
 # sh -c 'echo "dicdir=/usr/local/lib/mecab/dic/mecab-ko-dic" > /usr/local/etc/mecabrc' && \
   cd / && \
   rm -rf /var/lib/apt/lists/* /tmp/*
