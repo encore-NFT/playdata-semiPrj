@@ -122,6 +122,8 @@ services:
       - ./hadoop.env
     networks:
       - localnet
+    depends_on:
+      - namenode
 
   resourcemanager:
     image: hadoop-resourcemanager:hadoop3.2.2-java8
@@ -133,6 +135,8 @@ services:
       - ./hadoop.env
     networks:
       - localnet
+    depends_on:
+      - namenode
 
   nodemanager1:
     image: hadoop-nodemanager:hadoop3.2.2-java8
@@ -144,6 +148,9 @@ services:
       - ./hadoop.env
     networks:
       - localnet
+    depends_on:
+      - namenode
+
   historyserver:
     image: hadoop-historyserver:hadoop3.2.2-java8
     container_name: historyserver
@@ -156,6 +163,8 @@ services:
       - ./hadoop.env
     networks:
       - localnet
+    depends_on:
+      - namenode
 
 # volumes
 volumes:
