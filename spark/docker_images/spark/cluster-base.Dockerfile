@@ -47,9 +47,19 @@ RUN cd /tmp && \
 
 RUN pip3 install mecab-python3
 
+# add jars
+RUN set -x && \
+  cd /opt/workspace && \
+  mkdir jars && \
+  cd jars && \
+  curl -LO https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/3.0.1/mongo-spark-connector_2.12-3.0.1.jar && \
+  curl -LO https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/4.0.5/mongodb-driver-core-4.0.5.jar && \
+  curl -LO https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-sync/4.0.5/mongodb-driver-sync-4.0.5.jar && \
+  curl -LO https://repo1.maven.org/maven2/org/mongodb/bson/4.0.5/bson-4.0.5.jar && \
+  curl -LO https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.21/mysql-connector-java-8.0.21.jar
+
 ENV SHARED_WORKSPACE=${shared_workspace}
 
 # -- Runtime
-
 VOLUME ${shared_workspace}
 CMD ["bash"]
