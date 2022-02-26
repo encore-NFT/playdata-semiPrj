@@ -14,6 +14,8 @@ docker build --no-cache -t hadoop-historyserver:hadoop3.2.2-java8 ./historyserve
 
 # hadoop-namenode
 # docker build --no-cache -t hadoop-namenode:hadoop3.2.2-java8 ./namenode
+
+# hadoop-namenode-sqoop
 docker build --no-cache -t hadoop-namenode-sqoop:hadoop3.2.2-sqoop1.4.7 ./namenode-sqoop
 
 # hadoop-nodemanager
@@ -36,6 +38,8 @@ docker build --no-cache -t hadoop-resourcemanager:hadoop3.2.2-java8 ./resourcema
 
 # # hadoop-namenode
 # # docker build --platform linux/amd64 --no-cache -t hadoop-namenode:hadoop3.2.2-java8 ./namenode
+
+# hadoop-namenode-sqoop
 # docker build --platform linux/amd64 --no-cache -t hadoop-namenode-sqoop:hadoop3.2.2-sqoop1.4.7 ./namenode-sqoop
 
 # # hadoop-nodemanager
