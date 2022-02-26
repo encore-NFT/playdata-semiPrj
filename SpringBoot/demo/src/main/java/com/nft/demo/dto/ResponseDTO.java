@@ -1,5 +1,4 @@
-package com.example.demo.dto;
-
+package com.nft.demo.dto;
 /*
  * @Date : 2022.02.26
  * @version : 1.0

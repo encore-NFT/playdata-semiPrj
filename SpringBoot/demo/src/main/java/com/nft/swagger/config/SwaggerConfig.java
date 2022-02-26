@@ -1,4 +1,4 @@
-package com.example.swagger.config;
+package com.nft.swagger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
