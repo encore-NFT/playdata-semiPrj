@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    private ApiInfo swaggerInfo(){
+    private ApiInfo swaggerInfo() {
         return new ApiInfoBuilder()
                 .title("테스트 API 타이틀")
                 .description("테스트 API 상세소개 및 사용법 등")
@@ -23,7 +23,7 @@ public class SwaggerConfig {
                 .version("1.0")
                 .build();
     }
-    
+
     @Bean
     public Docket swagger() {
         return new Docket(DocumentationType.SWAGGER_2)

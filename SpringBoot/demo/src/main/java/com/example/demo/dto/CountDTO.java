@@ -6,20 +6,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor @AllArgsConstructor @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class CountDTO {
-  	private String wordList;
-  	private int num;
+    private String wordList;
+    private int num;
 
-  	public CountDTO(final CountEntity entity) {
-  		this.wordList = entity.getWordList();
-      	this.num = entity.getNum();
+    public CountDTO(final CountEntity entity) {
+        this.wordList = entity.getWordList();
+        this.num = entity.getNum();
     }
-  
-  	public static CountEntity toEntity(final CountDTO dto) {
-      	return CountEntity.builder()
-          	.wordList(dto.getWordList())
-          	.num(dto.getNum())
-          	.build();
+
+    public static CountEntity toEntity(final CountDTO dto) {
+        return CountEntity.builder()
+                .wordList(dto.getWordList())
+                .num(dto.getNum())
+                .build();
     }
 }
