@@ -87,7 +87,7 @@ $SPARK_HOME/bin/spark-submit \
 
 ### SQOOP
 
-* sqoop connection tes
+* sqoop connection test
 * the following command should be executed in container namenode
 
 ```sh
