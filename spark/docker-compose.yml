@@ -75,9 +75,9 @@ services:
       - localnet
   
   db2:          
-    # image: mysql:5.7.19
-    image: mysql:5.7 # M1
-    platform: linux/x86_64 # M1
+    image: mysql:5.7.19
+    # image: mysql:5.7 # M1
+    # platform: linux/x86_64 # M1
     container_name: mysql2 
     restart: always
     environment:
@@ -95,7 +95,7 @@ services:
 
 # hdfs
   namenode:
-    image: hadoop-namenode:hadoop3.2.2-java8
+    image: hadoop-namenode-sqoop:hadoop3.2.2-sqoop1.4.7
     container_name: namenode
     restart: always
     ports:
