@@ -5,11 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 // RestController : http와 관련된 코드 및 요청/응답 매핑을 해줌
-import org.springframework.web.bind.annotation.RestController;
 
 import com.nft.demo.dto.KidCountDTO;
 import com.nft.demo.dto.KidNewsDTO;
@@ -19,6 +16,7 @@ import com.nft.demo.model.KidNewsEntity;
 import com.nft.demo.service.WordCloudService;
 
 // http://localhost:80/wordcloud
+@CrossOrigin(origins = "http://localhost:3000") // React 연결
 @RestController
 @RequestMapping("wordcloud")
 public class WordCloudController {
