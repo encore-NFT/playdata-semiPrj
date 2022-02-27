@@ -17,9 +17,9 @@ public class SwaggerConfig {
 
     private ApiInfo swaggerInfo() {
         return new ApiInfoBuilder()
-                .title("테스트 API 타이틀")
-                .description("테스트 API 상세소개 및 사용법 등")
-                .contact(new Contact("mile", "milenote.tistory.com", "skn@futurenuri.com"))
+                .title("NFT API title")
+                .description("NFT Test...")
+                .contact(new Contact("nft", "https://github.com/euneun316/PlayData-SemiPrj", "nft@nft.zzang.com"))
                 .version("1.0")
                 .build();
     }
@@ -36,6 +36,4 @@ public class SwaggerConfig {
                 .apiInfo(swaggerInfo())
                 .enable(true);
     }
-
-
 }

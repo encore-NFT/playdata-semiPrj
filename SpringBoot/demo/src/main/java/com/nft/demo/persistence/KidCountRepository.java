@@ -2,14 +2,13 @@ package com.nft.demo.persistence;
 
 import java.util.List;
 
+import com.nft.demo.model.KidCountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.nft.demo.model.KidCountEntity;
-
 @Repository
-public interface CountRepository extends JpaRepository<KidCountEntity, String> {
+public interface KidCountRepository extends JpaRepository<KidCountEntity, String> {
 
     @Query(value = "select kid_count_word, sum(kid_count_value) as kid_count_value "
             + "from kid_word_count "
