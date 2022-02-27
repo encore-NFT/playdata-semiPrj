@@ -1,30 +1,26 @@
 package com.nft.demo.controller;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-// RestController : http와 관련된 코드 및 요청/응답 매핑을 해줌
-import org.springframework.web.bind.annotation.RestController;
-
 import com.nft.demo.dto.KidCountDTO;
 import com.nft.demo.dto.KidNewsDTO;
 import com.nft.demo.dto.ResponseDTO;
 import com.nft.demo.model.KidCountEntity;
 import com.nft.demo.model.KidNewsEntity;
-import com.nft.demo.service.WordCloudService;
+import com.nft.demo.service.KidWordCloudService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-// http://localhost:80/wordcloud
+import java.util.List;
+import java.util.stream.Collectors;
+
+// http://localhost/kid/lastweek/2022-01-05
+@CrossOrigin(origins = "http://localhost:3000") // React 연결
 @RestController
-@RequestMapping("wordcloud")
-public class WordCloudController {
+@RequestMapping("kid")
+public class KidWordCloudController {
 
     @Autowired //자바빈을 찾아서 인스턴스 멤버 변수에 연결
-    private WordCloudService service;
+    private KidWordCloudService service;
 
     @GetMapping("/thisweek")
     public ResponseEntity<?> getThisWeekWC() {
@@ -40,7 +36,7 @@ public class WordCloudController {
         return ResponseEntity.ok().body(response);
     }
 
-    @GetMapping("lastweek/{date}") // @PathVariable : URI의 경로로 넘어오는 값을 변수로 받을 수 있다.
+    @GetMapping("lastweek/{date}")
     public ResponseEntity<?> getLastWeekWC(@PathVariable(required = false) String date) {
         List<KidCountEntity> entities = service.getLastWeek(date);
 
@@ -69,9 +65,10 @@ public class WordCloudController {
         return ResponseEntity.ok().body(response);
     }
 
+    //    http://localhost/kid/lastweek/2022-01-05/호랑이
     @GetMapping("lastweek/{date}/{word}")
     public ResponseEntity<?> getLastWeekNewsList(
-            @PathVariable String date, @PathVariable(required = false) String word) {
+            @PathVariable String date, @PathVariable(required = true) String word) {
 
         List<KidNewsEntity> entities = service.getLastWeekNews(date, word);
 

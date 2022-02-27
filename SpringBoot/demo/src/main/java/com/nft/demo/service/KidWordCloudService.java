@@ -2,21 +2,22 @@ package com.nft.demo.service;
 
 import java.util.List;
 
+import com.nft.demo.model.KidCountEntity;
+import com.nft.demo.model.KidNewsEntity;
+import com.nft.demo.persistence.KidCountRepository;
+import com.nft.demo.persistence.KidNewsRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nft.demo.model.KidCountEntity;
-import com.nft.demo.model.KidNewsEntity;
-import com.nft.demo.persistence.CountRepository;
-import com.nft.demo.persistence.NewsRepository;
-
-@Service //@Slf4j
-public class WordCloudService {
+@Service
+public class KidWordCloudService {
 
     @Autowired
-    private CountRepository countRepository;
+    private KidCountRepository countRepository;
+
     @Autowired
-    private NewsRepository newsReopository;
+    private KidNewsRepository newsReopository;
 
     public List<KidCountEntity> getThisWeek() {
         return countRepository.findByNow();
@@ -33,5 +34,4 @@ public class WordCloudService {
     public List<KidNewsEntity> getLastWeekNews(final String date, final String word) {
         return newsReopository.findByLastWeekWord(date, word);
     }
-
 }
