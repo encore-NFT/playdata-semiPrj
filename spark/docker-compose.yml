@@ -137,6 +137,7 @@ services:
       - localnet
     depends_on:
       - namenode
+      - datanode
 
   nodemanager1:
     image: hadoop-nodemanager:hadoop3.2.2-java8
@@ -150,6 +151,8 @@ services:
       - localnet
     depends_on:
       - namenode
+      - datanode
+      - resourcemanager
 
   historyserver:
     image: hadoop-historyserver:hadoop3.2.2-java8
@@ -165,6 +168,8 @@ services:
       - localnet
     depends_on:
       - namenode
+      - datanode
+      - resourcemanager
 
 # volumes
 volumes:

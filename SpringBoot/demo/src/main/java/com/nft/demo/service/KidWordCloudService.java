@@ -10,28 +10,28 @@ import com.nft.demo.model.KidNewsEntity;
 import com.nft.demo.persistence.CountRepository;
 import com.nft.demo.persistence.NewsRepository;
 
-@Service //@Slf4j
-public class WordCloudService {
+@Service
+public class WordCloudService <T>{
 
     @Autowired
-    private CountRepository countRepository;
-    @Autowired
-    private NewsRepository newsReopository;
+    private CountRepository<T> countRepository;
 
-    public List<KidCountEntity> getThisWeek() {
+    @Autowired
+    private NewsRepository<T> newsReopository;
+
+    public List<T> getThisWeek() {
         return countRepository.findByNow();
     }
 
-    public List<KidCountEntity> getLastWeek(final String date) {
+    public List<T> getLastWeek(final String date) {
         return countRepository.findByDate(date);
     }
 
-    public List<KidNewsEntity> getThisWeekNews(final String word) {
+    public List<T> getThisWeekNews(final String word) {
         return newsReopository.findByThisWeekWord(word);
     }
 
-    public List<KidNewsEntity> getLastWeekNews(final String date, final String word) {
+    public List<T> getLastWeekNews(final String date, final String word) {
         return newsReopository.findByLastWeekWord(date, word);
     }
-
 }
