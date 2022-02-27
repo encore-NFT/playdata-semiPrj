@@ -12,8 +12,8 @@ import com.example.demo.model.CountEntity;
 public interface CountRepository extends JpaRepository<CountEntity, String> {
   	
 	@Query(value="select word_list, sum(num) as num from wordcount "
-  			+ "where year(news_date_short) = year(now()) "
-  			+ "and week(news_date_short) = week(now()) "
+  			+ "where year(news_date_short) = year((select max(news_date_short) from wordcount)) "
+  			+ "and week(news_date_short) = week((select max(news_date_short) from wordcount)) "
   			+ "and num > 1 group by word_list "
   			+ "order by num desc limit 200 ", nativeQuery=true)
   	List<CountEntity> findByNow();

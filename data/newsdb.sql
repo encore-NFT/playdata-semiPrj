@@ -80,6 +80,16 @@ ORDER BY num DESC
 LIMIT 200;
 
 
+SELECT word_list, SUM(num) AS num
+FROM wordCount
+WHERE 
+	year(news_date_short) = YEAR((SELECT (max(news_date_short)) from wordCount)) AND
+	WEEK(news_date_short) = WEEK((SELECT (max(news_date_short)) from wordCount)) AND
+	num > 1
+GROUP BY word_list 
+ORDER BY num DESC
+LIMIT 200;
+
 
 -- localhost/wordcount/lastweek?date=2022-01-05
 --     SELECT YEAR("2022-01-05");
