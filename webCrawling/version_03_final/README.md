@@ -7,7 +7,7 @@
 % nohup python3 -u Naver_news_crawling_{뉴스 기간}.py &
 ```
 
-## Back Ground 에서 실행중인 상태 확인
+## Back Ground에서 실행 중인 상태 확인
 
 ```zsh
 % ps -ef|grep 'Naver_news.*'
@@ -22,8 +22,8 @@
 ## 프로세스 종료 시키기
 
 ~~~ zsh
-# 프로세스ID 확인
+# 프로세스 ID 확인
 % ps -ef|grep 'Naver.*'
 # 프로세스 종료
-% kill '프로세스ID'
+% kill '프로세스 ID'
 ~~~
