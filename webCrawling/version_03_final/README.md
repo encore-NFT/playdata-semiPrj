@@ -3,7 +3,7 @@
 ## Naver_news_crawling.py 실행하기
 
 ```zsh
-# 원하는 크롤링 기간으로 *py 파일의 코드를 편집 후 실행
+# 원하는 크롤링 기간으로 *.py 파일의 코드를 편집 후 실행
 % nohup python3 -u Naver_news_crawling_{뉴스 기간}.py &
 ```
 
