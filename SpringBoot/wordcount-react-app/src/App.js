@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import News from "./News";
 import WC from "./WC";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
@@ -20,15 +20,6 @@ function App() {
     { name: '일반', value: '2' },
   ];
 
-  useEffect(() =>  {
-    console.log(wcUrl);
-  }, [wcUrl]);
-
-  useEffect(() =>  {
-    console.log(newsDate);
-  }, [newsDate]);
-
-
   const kidUrl = () => {
     setWcUrl("http://localhost/kid")
   };
@@ -40,17 +31,19 @@ function App() {
   const onSubmit = (e) => {
     // submit을 할때 refresh를 막아줌
     e.preventDefault();
-    setNewsUrl(wcUrl + newsDate + "/" + keyWord);
+    setNewsUrl(newsDate === "" ? wcUrl + "/thisweek/" + keyWord : wcUrl + newsDate + "/" + keyWord);
+    console.log(newsUrl);
   }
 
   return (
     <div className="App">
       <div className="container">
+{/* title */}
+        <h2 className="mt-5">
+          <span id="word">Word</span> <span id="cloud">Cloud</span>
+        </h2>
 
-        {/* title */}
-        <h2 className="mt-5"><span id="word">Word</span> <span id="cloud">Cloud</span></h2>
-
-        {/* tab */}
+{/* tab */}
         <div className="mt-4">
           <ButtonGroup>
             {radios.map((radio, idx) => (
@@ -71,19 +64,19 @@ function App() {
           </ButtonGroup>
         </div>
         
-        {/* word cloud contents */}
+{/* word cloud contents */}
         <div className="contentArea">
           <div className="m-2 pt-3">
             <input 
               type="date" 
-              onChange={(e) => setNewsDate("/" + e.target.value)}/>
+              onChange={(e) => setNewsDate("/lastweek/" + e.target.value)}/>
           </div>
           <div className="mt-3">
-            <WC url={wcUrl + newsDate}/>
+            <WC url={newsDate === "" ? wcUrl + "/thisweek" : wcUrl + newsDate}/>
           </div>
         </div>
         
-        {/* search box */}
+{/* search box */}
         <form onSubmit={onSubmit}>
           <div className="searchBar">
             <SearchIcon/>
@@ -96,9 +89,9 @@ function App() {
           </div>
         </form>
 
-        {/* horizontal line */}
+{/* horizontal line */}
         <div className="mt-4">
-        <hr className/>
+          <hr/>
         </div>
 
         <News url={newsUrl}/>

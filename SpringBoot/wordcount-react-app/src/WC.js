@@ -6,17 +6,15 @@ import { schemeCategory10 } from 'd3-scale-chromatic';
 
 const schemeCategory10ScaleOrdinal = scaleOrdinal(schemeCategory10);
 
-function WC(props) {
-    const url = props.url
+function WC({url}) {
     const [data, setData] = useState([]);
-
-    useEffect((url) => {
+    
+    useEffect(() => {
         axios.get(url)
             .then(response => {
-                console.log(response)
                 setData(response.data.data);
             });
-    }, []);
+    }, [url]);
 
     return (
         <WordCloud
@@ -38,12 +36,6 @@ function WC(props) {
             fill={(d, i) => schemeCategory10ScaleOrdinal(i)}
             onWordClick={(event, d) => {
                 console.log(`onWordClick: ${d.text}`);
-            }}
-            onWordMouseOver={(event, d) => {
-                console.log(`onWordMouseOver: ${d.text}`);
-            }}
-            onWordMouseOut={(event, d) => {
-                console.log(`onWordMouseOut: ${d.text}`);
             }}
         />
     );
