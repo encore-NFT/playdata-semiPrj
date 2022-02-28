@@ -26,7 +26,7 @@ public class AdultNewsEntity {
     private String adultNewsUrl; // 기사 Url
     private String adultNewsTitle; // 기사 제목
     private String adultNewsDate; // 기사 날짜
-    private String adultNewsImg; // 기사 이미지
+//    private String adultNewsImg; // 기사 이미지
     private String adultNewsSource; // 기사 출처
 
 }

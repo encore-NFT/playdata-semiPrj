@@ -19,14 +19,12 @@ public class AdultNewsDTO {
     private String adultNewsUrl;
     private String adultNewsTitle;
     private String adultNewsDate;
-    private String adultNewsImg;
     private String adultNewsSource;
 
     public AdultNewsDTO(final AdultNewsEntity entity) {
         this.adultNewsUrl = entity.getAdultNewsUrl();
         this.adultNewsTitle = entity.getAdultNewsTitle();
         this.adultNewsDate = entity.getAdultNewsDate();
-        this.adultNewsImg = entity.getAdultNewsImg();
         this.adultNewsSource = entity.getAdultNewsSource();
     }
 
@@ -35,10 +33,7 @@ public class AdultNewsDTO {
                 .adultNewsUrl(dto.getAdultNewsUrl())
                 .adultNewsTitle(dto.getAdultNewsTitle())
                 .adultNewsDate(dto.getAdultNewsDate())
-                .adultNewsImg(dto.getAdultNewsImg())
                 .adultNewsSource(dto.getAdultNewsSource())
                 .build();
     }
-
-
 }
