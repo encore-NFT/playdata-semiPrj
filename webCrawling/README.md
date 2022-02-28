@@ -1,11 +1,11 @@
-# Naver_News_Crawling
+# News_Crawling
 
 ---
 
+## adult_news
+
 1. 기간:  2022-02 ~ 2021-09(6개월)
-
 2. 언론사: 동아일보, 조선일보, 중앙일보, 매열경제신문
-
 3. 항목: 
 
    - news_url
