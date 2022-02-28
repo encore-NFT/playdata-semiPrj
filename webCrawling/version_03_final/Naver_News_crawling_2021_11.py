@@ -83,20 +83,20 @@ for news_url in news_all_urllist:
     json_data["news_subtitle"] = news_subtitle
     print(news_subtitle)
 
-    # news_wrtier: 기자
+    # news_writer: 기자
     try:
         if news_page_html.select_one(".journalistcard_summary_name"):
-            news_wrtier = news_page_html.select_one(".journalistcard_summary_name").text
-            news_wrtier = re.sub("[기자]","", news_wrtier).strip()
+            news_writer = news_page_html.select_one(".journalistcard_summary_name").text
+            news_writer = re.sub("[기자]","", news_writer).strip()
         elif news_page_html.select_one(".b_text"):
-            news_wrtier = news_page_html.select_one(".b_text").text
-            news_wrtier = re.sub("[|기자|인턴|특파원|\s|\d|a-z|(|@|.|)|]","", news_wrtier).strip()
+            news_writer = news_page_html.select_one(".b_text").text
+            news_writer = re.sub("[|기자|인턴|특파원|\s|\d|a-z|(|@|.|)|]","", news_writer).strip()
         else:
-            news_wrtier = ""
+            news_writer = ""
     except:
         continue
-    json_data["news_wrtier"] = news_wrtier
-    print(news_wrtier)
+    json_data["news_writer"] = news_writer
+    print(news_writer)
 
     # news_date: 날짜
     try:

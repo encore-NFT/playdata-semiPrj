@@ -1,29 +1,24 @@
-# Naver News Crawling
+# Naver_News_Crawling
 
-## Naver_news_crawling.py 실행하기
+---
 
-```zsh
-# 원하는 크롤링 기간으로 *py 파일의 코드를 편집 후 실행
-% nohup python3 -u Naver_news_crawling_{뉴스 기간}.py &
-```
+1. 기간:  2022-02 ~ 2021-09(6개월)
 
-## Back Ground 에서 실행중인 상태 확인
+2. 언론사: 동아일보, 조선일보, 중앙일보, 매열경제신문
 
-```zsh
-% ps -ef|grep 'Naver_news.*'
-```
+3. 항목: 
 
-## 입출력 로그 보기
+   - news_url
 
-```zsh
-% tail -f nohup.out
-```
+   - news_title
 
-## 프로세스 종료 시키기
+   - news_subtitle
 
-~~~ zsh
-# 프로세스ID 확인
-% ps -ef|grep 'Naver.*'
-# 프로세스 정료
-% kill '프로세스ID'
-~~~
+   - news_writer
+
+   - news_date
+
+   - news_article
+
+   - news_source
+
