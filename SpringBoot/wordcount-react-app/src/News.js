@@ -4,17 +4,8 @@ import KidNewsList from "./KidNewsList";
 
 function News({url}) {
     // const substring = "kid";
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        axios.get(url)
-            .then(response => {
-                setData(response.data.data);
-                console.log(data)
-            });
-    }, [data]);
     
-    return <KidNewsList data={data}/>;
+    return <KidNewsList/>;
 }
 
 export default React.memo(News);
