@@ -26,7 +26,7 @@
 
 ### Data Flow
 
-<img width="1082" alt="data_flow" src="https://user-images.githubusercontent.com/44595181/156186235-ba6fe361-92ed-4ec1-b76f-043a42dc68fe.png">
+<img width="946" alt="data_flow" src="https://user-images.githubusercontent.com/44595181/156196295-20edae61-c75e-4ec6-92a3-e9659f63e3f3.png">
 
 </br>
 
