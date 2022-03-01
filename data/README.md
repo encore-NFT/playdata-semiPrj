@@ -14,7 +14,6 @@
 |  | news_img | news_img(X) |
 |  | news_source | news_source |
 
-
 ## MySQL
 
 - database : news_db
